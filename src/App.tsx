@@ -3,20 +3,16 @@ import { S } from "./components/pages/_styles";
 import { Abibas } from "./components/pages/Abibas";
 import { Adidas } from "./components/pages/Adidas";
 import { Error404 } from "./components/pages/Error404";
+import { Model } from "./components/pages/Model";
 import { Puma } from "./components/pages/Puma";
 import styles from "./components/Site.module.css";
-// import { SimpleExample } from "./components/UseEffect1";
-// import { SetTimeoutExample } from "./components/UseEffect2";
-// import { SetIntervalExample } from "./components/UseEffect3";
-// import { DateTimer } from "./components/UseEffect4";
-import { Model } from "./components/pages/Model";
 
 const PATH = {
   PAGE1: "/adidas",
   PAGE2: "/puma",
   PAGE3: "/abibas",
   error404: "/error404",
-} as const
+} as const;
 
 export const App = () => {
   return (
@@ -27,33 +23,33 @@ export const App = () => {
       <div className={styles.body}>
         <div className={styles.nav}>
           {/* <div><NavLink to="/page1" className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink}>Page1</NavLink></div> */}
-          <S.NavWrapper><NavLink to={PATH.PAGE1}>Adidas</NavLink></S.NavWrapper>
+          <S.NavWrapper>
+            <NavLink to={PATH.PAGE1}>Adidas</NavLink>
+          </S.NavWrapper>
           {/* <div><NavLink to="/page2" className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink}>Page2</NavLink></div> */}
-          <S.NavWrapper><NavLink to={PATH.PAGE2}>Puma</NavLink></S.NavWrapper>
+          <S.NavWrapper>
+            <NavLink to={PATH.PAGE2}>Puma</NavLink>
+          </S.NavWrapper>
           {/* <div><NavLink to="/page3" className={({isActive}) => isActive ? styles.activeNavLink : styles.navLink}>Page3</NavLink></div> */}
-          <S.NavWrapper><NavLink to={PATH.PAGE3}>Abibas</NavLink></S.NavWrapper>
+          <S.NavWrapper>
+            <NavLink to={PATH.PAGE3}>Abibas</NavLink>
+          </S.NavWrapper>
         </div>
         <div className={styles.content}>
           <Routes>
-            <Route path="/" element={<Navigate to={PATH.PAGE1}/>}/>
-            <Route path={PATH.PAGE1} element={<Adidas />}/>
-            <Route path={PATH.PAGE2} element={<Puma />}/>
-            <Route path={PATH.PAGE3} element={<Abibas />}/>
+            <Route path="/" element={<Navigate to={PATH.PAGE1} />} />
+            <Route path={PATH.PAGE1} element={<Adidas />} />
+            <Route path={PATH.PAGE2} element={<Puma />} />
+            <Route path={PATH.PAGE3} element={<Abibas />} />
             {/* <Route path={PATH.error404} element={<Error404/>}/> */}
             {/* <Route path={"/*"} element={<Navigate to={PATH.error404}/>}/>  */}
             {/* символы /* означает все что угодно кроме вышеперечисленного */}
-            <Route path={"/adidas/:id"} element={<Model/>}/>
-            <Route path={"/*"} element={<Error404/>}/> 
+            <Route path={"/:model/:id"} element={<Model />} />
+            <Route path={"/*"} element={<Error404 />} />
           </Routes>
-          {/* <SimpleExample/>
-          <SetTimeoutExample/>
-          <SetIntervalExample/>
-          <DateTimer/> */}
         </div>
       </div>
       <div className={styles.footer}>abibas 2023</div>
     </div>
   );
-}
-
-
+};
